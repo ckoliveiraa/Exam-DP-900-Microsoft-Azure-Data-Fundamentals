@@ -1,12 +1,301 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simulado Final — DP-900</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulado Final — Azure Data Fundamentals (DP-900)</title>
+<style>
+  :root{
+    --azul:#0078d4; --azul-esc:#005a9e; --verde:#107c10; --vermelho:#d13438;
+    --bg:#f3f3f3; --card:#ffffff; --texto:#242424; --cinza:#605e5c; --borda:#e1e1e1;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:var(--bg);
+    color:var(--texto);line-height:1.5;padding:16px}
+  .wrap{max-width:760px;margin:0 auto}
+  header{text-align:center;padding:24px 0}
+  header h1{font-size:1.5rem;color:var(--azul-esc)}
+  header p{color:var(--cinza);font-size:.95rem;margin-top:4px}
+  .card{background:var(--card);border:1px solid var(--borda);border-radius:8px;
+    padding:24px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+  .btn{background:var(--azul);color:#fff;border:none;padding:12px 24px;border-radius:4px;
+    font-size:1rem;cursor:pointer;font-weight:600}
+  .btn:hover{background:var(--azul-esc)}
+  .btn:disabled{background:#c8c8c8;cursor:not-allowed}
+  .btn-sec{background:#fff;color:var(--azul);border:1px solid var(--azul)}
+  .btn-sec:hover{background:#f0f6fc}
+  .hidden{display:none}
+  ul.info{list-style:none;margin:16px 0}
+  ul.info li{padding:4px 0;color:var(--cinza)}
+  ul.info li b{color:var(--texto)}
+  .bar{height:8px;background:var(--borda);border-radius:4px;overflow:hidden;margin-bottom:8px}
+  .bar > div{height:100%;background:var(--azul);transition:width .3s}
+  .meta{display:flex;justify-content:space-between;font-size:.85rem;color:var(--cinza);margin-bottom:16px}
+  .tag{display:inline-block;background:#eef4fb;color:var(--azul-esc);font-size:.72rem;
+    font-weight:600;padding:2px 8px;border-radius:10px;margin-bottom:10px}
+  .pergunta{font-size:1.08rem;font-weight:600;margin-bottom:16px}
+  .opt{display:block;width:100%;text-align:left;background:#fff;border:1px solid var(--borda);
+    border-radius:6px;padding:12px 14px;margin-bottom:8px;cursor:pointer;font-size:.97rem;
+    transition:border-color .15s,background .15s}
+  .opt:hover{border-color:var(--azul)}
+  .opt.sel{border-color:var(--azul);background:#eef4fb}
+  .opt.certa{border-color:var(--verde);background:#eef7ee}
+  .opt.errada{border-color:var(--vermelho);background:#fbeeee}
+  .opt .letra{font-weight:700;margin-right:8px}
+  .nav{display:flex;justify-content:space-between;gap:8px;margin-top:16px}
+  .resultado{text-align:center}
+  .nota{font-size:3rem;font-weight:700;margin:8px 0}
+  .nota.ok{color:var(--verde)} .nota.fail{color:var(--vermelho)}
+  .selo{font-size:1.1rem;font-weight:600;margin-bottom:8px}
+  .dominios{margin:16px 0;text-align:left}
+  .dlinha{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--borda);font-size:.92rem}
+  .rev-item{border-left:4px solid var(--borda);padding:10px 14px;margin-bottom:10px;background:#fafafa;border-radius:0 6px 6px 0}
+  .rev-item.ok{border-color:var(--verde)} .rev-item.fail{border-color:var(--vermelho)}
+  .rev-q{font-weight:600;margin-bottom:6px;font-size:.95rem}
+  .rev-a{font-size:.88rem;margin:2px 0}
+  .rev-a.c{color:var(--verde)} .rev-a.e{color:var(--vermelho)}
+  .exp{font-size:.86rem;color:var(--cinza);margin-top:6px;font-style:italic}
+  footer{text-align:center;color:var(--cinza);font-size:.8rem;padding:24px 0}
+  footer a{color:var(--azul)}
+</style>
 </head>
 <body>
-  <h1>Simulado Final — Microsoft Azure Data Fundamentals (DP-900)</h1>
-  <p>Esqueleto — questões interativas a definir.</p>
+<div class="wrap">
+  <header>
+    <h1>Simulado Final — DP-900</h1>
+    <p>Microsoft Azure Data Fundamentals</p>
+  </header>
+
+  <!-- TELA INICIAL -->
+  <div id="inicio" class="card">
+    <p>Este simulado reúne <b>40 questões</b> no estilo do exame oficial, cobrindo os 4 domínios do DP-900.</p>
+    <ul class="info">
+      <li><b>Questões:</b> 40 (sorteadas e embaralhadas)</li>
+      <li><b>Aprovação:</b> 70% — equivale à nota de corte <b>700/1000</b></li>
+      <li><b>Formato:</b> uma resposta correta por questão</li>
+      <li><b>Ao final:</b> nota, desempenho por domínio e revisão comentada</li>
+    </ul>
+    <button class="btn" onclick="iniciar()">Começar simulado</button>
+  </div>
+
+  <!-- TELA DO QUIZ -->
+  <div id="quiz" class="card hidden">
+    <div class="bar"><div id="progresso"></div></div>
+    <div class="meta">
+      <span id="contador"></span>
+      <span id="dominioLabel"></span>
+    </div>
+    <span class="tag" id="tagDominio"></span>
+    <div class="pergunta" id="textoPergunta"></div>
+    <div id="opcoes"></div>
+    <div class="nav">
+      <button class="btn btn-sec" id="btnVoltar" onclick="voltar()">← Anterior</button>
+      <button class="btn" id="btnAvancar" onclick="avancar()">Próxima →</button>
+    </div>
+  </div>
+
+  <!-- TELA DE RESULTADO -->
+  <div id="resultado" class="card hidden resultado">
+    <div class="selo" id="selo"></div>
+    <div class="nota" id="notaTexto"></div>
+    <p id="acertosTexto" style="color:var(--cinza)"></p>
+    <div class="dominios" id="dominios"></div>
+    <div class="nav">
+      <button class="btn btn-sec" onclick="toggleRevisao()">Ver revisão comentada</button>
+      <button class="btn" onclick="reiniciar()">Refazer simulado</button>
+    </div>
+  </div>
+
+  <!-- REVISÃO -->
+  <div id="revisao" class="card hidden"></div>
+
+  <footer>
+    Material educacional — <a href="https://github.com/ckoliveiraa/Exam-DP-900-Microsoft-Azure-Data-Fundamentals">Curso DP-900 no GitHub</a>
+  </footer>
+</div>
+
+<script>
+const BANCO = [
+  // ---- Domínio 1 — Conceitos centrais de dados ----
+  {d:1,q:"Uma tabela com colunas e tipos de dados definidos é um exemplo de dados:",o:["Não estruturados","Estruturados","Semiestruturados","Binários"],c:1,e:"Tabelas com esquema fixo (colunas e tipos) são dados estruturados."},
+  {d:1,q:"Um arquivo JSON em que cada registro pode ter campos diferentes é classificado como:",o:["Estruturado","Não estruturado","Semiestruturado","Relacional"],c:2,e:"Campos que variam por registro caracterizam dados semiestruturados."},
+  {d:1,q:"Qual destes é um exemplo de dado não estruturado?",o:["Uma planilha","Um vídeo","Uma tabela SQL","Um documento XML"],c:1,e:"Vídeo não se organiza em campos — é dado não estruturado."},
+  {d:1,q:"Em qual abordagem o esquema é validado no momento da gravação?",o:["Schema-on-read","Schema-on-write","Schema-on-query","Schema-on-delete"],c:1,e:"Schema-on-write valida o esquema ao gravar — típico de bancos relacionais."},
+  {d:1,q:"Qual formato de arquivo é orientado a coluna e indicado para análise?",o:["CSV","Avro","Parquet","XML"],c:2,e:"Parquet é colunar, ótimo para leitura analítica e compressão."},
+  {d:1,q:"O formato Avro é orientado a linha e adequado para:",o:["Leitura analítica","Escrita e ingestão","Compressão máxima","Armazenar imagens"],c:1,e:"Avro é orientado a linha, bom para escrita e ingestão."},
+  {d:1,q:"Um sistema de ponto de venda que registra vendas em tempo real é uma carga de trabalho:",o:["OLAP","OLTP","ETL","Analítica"],c:1,e:"Registro de operações do dia a dia é uma carga transacional (OLTP)."},
+  {d:1,q:"O que garante a propriedade de atomicidade (ACID)?",o:["Os dados ficam criptografados","A transação ocorre por inteiro ou não ocorre","Transações não interferem entre si","Os dados persistem após falha"],c:1,e:"Atomicidade = a transação acontece toda ou nenhuma parte dela."},
+  {d:1,q:"Qual carga de trabalho é otimizada para leitura e agregação de grandes volumes históricos?",o:["OLTP","OLAP","Transacional","Chave-valor"],c:1,e:"OLAP é voltado a análise de dados históricos."},
+  {d:1,q:"Criar pipelines que carregam dados de várias fontes é tarefa de qual função?",o:["DBA","Engenheiro de dados","Analista de dados","Usuário final"],c:1,e:"Pipelines de dados são responsabilidade do engenheiro de dados."},
+  {d:1,q:"Qual ferramenta está associada ao analista de dados?",o:["Azure Data Factory","SQL Server Management Studio","Power BI","Azure Blob Storage"],c:2,e:"O Power BI é a ferramenta do analista de dados."},
+
+  // ---- Domínio 2 — Dados relacionais no Azure ----
+  {d:2,q:"O que identifica unicamente cada linha de uma tabela?",o:["Chave estrangeira","Índice","Chave primária","View"],c:2,e:"A chave primária identifica unicamente cada linha."},
+  {d:2,q:"Uma coluna que referencia a chave primária de outra tabela é uma:",o:["Chave primária","Chave estrangeira","Chave composta","Restrição"],c:1,e:"Chave estrangeira referencia a chave primária de outra tabela."},
+  {d:2,q:"Qual é o principal objetivo da normalização?",o:["Acelerar a leitura","Reduzir a redundância de dados","Aumentar o nº de tabelas","Eliminar chaves"],c:1,e:"Normalização reduz redundância e evita anomalias de atualização."},
+  {d:2,q:"O comando SQL que adiciona novas linhas a uma tabela é:",o:["UPDATE","INSERT","ALTER","CREATE"],c:1,e:"INSERT adiciona novas linhas (comando DML)."},
+  {d:2,q:"Qual família de comandos SQL define a estrutura do banco?",o:["DML","DCL","DDL","TCL"],c:2,e:"DDL (CREATE, ALTER, DROP) define a estrutura."},
+  {d:2,q:"Uma consulta salva que age como tabela virtual e não armazena dados é uma:",o:["Stored procedure","View","Índice","Trigger"],c:1,e:"A view é uma consulta salva; não armazena dados."},
+  {d:2,q:"Qual serviço da família Azure SQL é classificado como IaaS?",o:["Azure SQL Database","Azure SQL Managed Instance","SQL Server em VMs do Azure","Azure Database for MySQL"],c:2,e:"SQL Server em VM é IaaS — controle total do SO e da instância."},
+  {d:2,q:"Para migrar um SQL Server local para a nuvem com o mínimo de alterações, use:",o:["Azure SQL Database (banco único)","Azure SQL Managed Instance","Azure Database for PostgreSQL","Azure Cosmos DB"],c:1,e:"Managed Instance tem alta compatibilidade — ideal para migração."},
+  {d:2,q:"Em um serviço de banco de dados PaaS, quem cuida de patches e backups?",o:["O cliente","O Azure (provedor)","Um parceiro externo","Ninguém"],c:1,e:"Em PaaS, o Azure gerencia patches, backups e infraestrutura."},
+  {d:2,q:"Qual destes é um serviço gerenciado para banco open-source no Azure?",o:["Azure SQL Managed Instance","Azure Database for PostgreSQL","SQL Server em VM","Azure Cosmos DB"],c:1,e:"Azure Database for PostgreSQL é serviço para banco open-source."},
+
+  // ---- Domínio 3 — Dados não relacionais no Azure ----
+  {d:3,q:"Qual destes NÃO é um serviço de uma conta de armazenamento do Azure?",o:["Blob Storage","Table Storage","Azure SQL Database","Queue Storage"],c:2,e:"Azure SQL Database é relacional; não faz parte da conta de armazenamento."},
+  {d:3,q:"O Azure Blob Storage é mais adequado para:",o:["Dados relacionais","Dados não estruturados como imagens e vídeos","Tabelas normalizadas","Filas de mensagens"],c:1,e:"Blob Storage guarda dados não estruturados como objetos."},
+  {d:3,q:"Qual camada de acesso do Blob Storage é a mais barata para guardar dados raramente usados?",o:["Hot","Cool","Cold","Archive"],c:3,e:"Archive é a mais barata para armazenar, mas exige reidratação para ler."},
+  {d:3,q:"O Azure Files permite acessar arquivos por meio de quais protocolos?",o:["HTTP e FTP","SMB e NFS","ODBC e JDBC","SQL e T-SQL"],c:1,e:"O Azure Files usa os protocolos SMB e NFS."},
+  {d:3,q:"No Azure Table Storage, uma entidade é identificada por:",o:["Apenas a Row Key","Apenas a Partition Key","Partition Key + Row Key","Uma chave estrangeira"],c:2,e:"A entidade é identificada pela combinação Partition Key + Row Key."},
+  {d:3,q:"Qual é a principal característica do Azure Cosmos DB?",o:["Banco relacional de esquema fixo","NoSQL distribuído globalmente e de baixa latência","Funciona só em uma região","Não é gerenciado"],c:1,e:"Cosmos DB é NoSQL distribuído globalmente, com baixa latência."},
+  {d:3,q:"Como o desempenho do Cosmos DB é medido?",o:["Em gigabytes","Em Request Units (RUs)","Em nº de tabelas","Em horas de CPU"],c:1,e:"O desempenho do Cosmos DB é medido em Request Units (RUs)."},
+  {d:3,q:"Uma aplicação precisa armazenar dados altamente conectados (rede de relacionamentos). Qual API do Cosmos DB usar?",o:["API for NoSQL","API for Gremlin","API for Table","API for MongoDB"],c:1,e:"A API for Gremlin é para dados de grafo (altamente conectados)."},
+
+  // ---- Domínio 4 — Cargas de trabalho de análise ----
+  {d:4,q:"Qual é a primeira etapa do fluxo de análise em larga escala?",o:["Visualização","Modelagem","Ingestão","Armazenamento"],c:2,e:"A ingestão captura os dados das fontes — é a primeira etapa."},
+  {d:4,q:"No processo ELT, a transformação ocorre:",o:["Antes de carregar os dados","Depois de carregar os dados no destino","Durante a ingestão","Não há transformação"],c:1,e:"No ELT, carrega-se primeiro e transforma-se depois, já no destino."},
+  {d:4,q:"Um repositório de dados estruturados, modelados e otimizados para BI é um:",o:["Data lake","Data warehouse","Blob Storage","Banco OLTP"],c:1,e:"O data warehouse guarda dados estruturados e modelados para BI."},
+  {d:4,q:"Qual repositório armazena dados brutos de qualquer tipo, sem transformação prévia?",o:["Data warehouse","Data lake","Banco relacional","Table Storage"],c:1,e:"O data lake armazena dados brutos de qualquer tipo (schema-on-read)."},
+  {d:4,q:"O modelo que combina flexibilidade do data lake com desempenho do warehouse é o:",o:["Data mart","Data lakehouse","Banco NoSQL","Esquema estrela"],c:1,e:"O data lakehouse é o modelo híbrido."},
+  {d:4,q:"Qual serviço do Azure faz ingestão e transformação de dados via pipelines?",o:["Power BI","Azure Data Factory","Azure Stream Analytics","Azure Cosmos DB"],c:1,e:"O Azure Data Factory faz ingestão e transformação via pipelines."},
+  {d:4,q:"O Azure Databricks é baseado em qual tecnologia?",o:["SQL Server","Apache Spark","MongoDB","Power Query"],c:1,e:"O Azure Databricks é baseado no Apache Spark."},
+  {d:4,q:"Qual plataforma é uma solução SaaS de análise tudo-em-um da Microsoft?",o:["Azure HDInsight","Microsoft Fabric","Azure Data Factory","Azure Files"],c:1,e:"O Microsoft Fabric é a plataforma SaaS de análise tudo-em-um."},
+  {d:4,q:"O processamento em fluxo (streaming) é indicado quando:",o:["A resposta imediata não é necessária","É preciso reagir aos dados em tempo real","Os dados são processados uma vez por mês","Não há fonte de dados"],c:1,e:"Streaming serve para reagir aos dados em tempo real (baixa latência)."},
+  {d:4,q:"Qual serviço do Azure é dedicado à análise de fluxos em tempo real?",o:["Azure Data Factory","Azure Stream Analytics","Azure Synapse Pipelines","Power BI Desktop"],c:1,e:"O Azure Stream Analytics é dedicado a fluxos em tempo real."},
+  {d:4,q:"Em qual componente do Power BI os relatórios são criados?",o:["Power BI Mobile","Power BI Desktop","Power BI Gateway","OneLake"],c:1,e:"Os relatórios são criados no Power BI Desktop."},
+  {d:4,q:"Qual a diferença entre relatório e painel no Power BI?",o:["Não há diferença","O relatório tem uma página; o painel tem várias","O relatório pode ter várias páginas; o painel tem uma única","O painel só funciona offline"],c:2,e:"Relatório pode ter várias páginas; o painel (dashboard) tem uma única."},
+  {d:4,q:"Para mostrar a tendência de vendas ao longo dos meses, a melhor visualização é:",o:["Gráfico de pizza","Gráfico de linhas","Mapa","Cartão (KPI)"],c:1,e:"O gráfico de linhas é ideal para tendências ao longo do tempo."}
+];
+
+const NOMES_DOMINIO = {
+  1:"Conceitos centrais de dados",
+  2:"Dados relacionais no Azure",
+  3:"Dados não relacionais no Azure",
+  4:"Cargas de trabalho de análise"
+};
+const APROVACAO = 0.70;
+
+let questoes=[], respostas=[], atual=0;
+
+function embaralhar(arr){
+  const a=arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+function iniciar(){
+  // embaralha as questões e as opções de cada uma
+  questoes = embaralhar(BANCO).map(orig=>{
+    const idx = orig.o.map((_,i)=>i);
+    const idxEmb = embaralhar(idx);
+    return {
+      d:orig.d, q:orig.q, e:orig.e,
+      o: idxEmb.map(i=>orig.o[i]),
+      c: idxEmb.indexOf(orig.c)
+    };
+  });
+  respostas = new Array(questoes.length).fill(null);
+  atual = 0;
+  document.getElementById('inicio').classList.add('hidden');
+  document.getElementById('resultado').classList.add('hidden');
+  document.getElementById('revisao').classList.add('hidden');
+  document.getElementById('quiz').classList.remove('hidden');
+  render();
+}
+
+function render(){
+  const total=questoes.length;
+  const Q=questoes[atual];
+  document.getElementById('progresso').style.width=((atual)/total*100)+'%';
+  document.getElementById('contador').textContent=`Questão ${atual+1} de ${total}`;
+  document.getElementById('dominioLabel').textContent=`Respondidas: ${respostas.filter(r=>r!==null).length}`;
+  document.getElementById('tagDominio').textContent='Domínio '+Q.d+' — '+NOMES_DOMINIO[Q.d];
+  document.getElementById('textoPergunta').textContent=Q.q;
+
+  const cont=document.getElementById('opcoes');
+  cont.innerHTML='';
+  const letras=['A','B','C','D'];
+  Q.o.forEach((texto,i)=>{
+    const b=document.createElement('button');
+    b.className='opt'+(respostas[atual]===i?' sel':'');
+    b.innerHTML='<span class="letra">'+letras[i]+'</span>'+texto;
+    b.onclick=()=>{respostas[atual]=i;render();};
+    cont.appendChild(b);
+  });
+
+  document.getElementById('btnVoltar').disabled=(atual===0);
+  document.getElementById('btnAvancar').textContent=(atual===total-1)?'Finalizar ✓':'Próxima →';
+}
+
+function voltar(){ if(atual>0){atual--;render();} }
+
+function avancar(){
+  if(atual<questoes.length-1){ atual++; render(); }
+  else{ finalizar(); }
+}
+
+function finalizar(){
+  const naoResp=respostas.filter(r=>r===null).length;
+  if(naoResp>0 && !confirm(`Você deixou ${naoResp} questão(ões) sem resposta. Finalizar mesmo assim?`)) return;
+
+  let acertos=0;
+  const porDominio={1:{a:0,t:0},2:{a:0,t:0},3:{a:0,t:0},4:{a:0,t:0}};
+  questoes.forEach((Q,i)=>{
+    porDominio[Q.d].t++;
+    if(respostas[i]===Q.c){ acertos++; porDominio[Q.d].a++; }
+  });
+  const total=questoes.length;
+  const pct=acertos/total;
+  const nota=Math.round(pct*1000);
+  const aprovado=pct>=APROVACAO;
+
+  document.getElementById('quiz').classList.add('hidden');
+  const tela=document.getElementById('resultado');
+  tela.classList.remove('hidden');
+
+  document.getElementById('selo').textContent=aprovado?'✅ Aprovado':'❌ Não aprovado';
+  const notaEl=document.getElementById('notaTexto');
+  notaEl.textContent=nota+' / 1000';
+  notaEl.className='nota '+(aprovado?'ok':'fail');
+  document.getElementById('acertosTexto').textContent=
+    `${acertos} de ${total} acertos (${Math.round(pct*100)}%) — nota de corte: 700`;
+
+  const dEl=document.getElementById('dominios');
+  dEl.innerHTML='<div style="font-weight:600;margin-bottom:6px">Desempenho por domínio</div>';
+  for(let d=1;d<=4;d++){
+    const o=porDominio[d];
+    const p=o.t?Math.round(o.a/o.t*100):0;
+    dEl.innerHTML+=`<div class="dlinha"><span>D${d} — ${NOMES_DOMINIO[d]}</span><b>${o.a}/${o.t} (${p}%)</b></div>`;
+  }
+  window.scrollTo(0,0);
+}
+
+function toggleRevisao(){
+  const rev=document.getElementById('revisao');
+  if(!rev.classList.contains('hidden')){ rev.classList.add('hidden'); return; }
+  const letras=['A','B','C','D'];
+  let html='<h2 style="color:var(--azul-esc);font-size:1.2rem;margin-bottom:12px">Revisão comentada</h2>';
+  questoes.forEach((Q,i)=>{
+    const acertou=respostas[i]===Q.c;
+    html+=`<div class="rev-item ${acertou?'ok':'fail'}">`;
+    html+=`<div class="rev-q">${i+1}. ${Q.q}</div>`;
+    if(respostas[i]===null){
+      html+=`<div class="rev-a e">Você não respondeu.</div>`;
+    }else if(!acertou){
+      html+=`<div class="rev-a e">Sua resposta: ${letras[respostas[i]]}) ${Q.o[respostas[i]]}</div>`;
+    }
+    html+=`<div class="rev-a c">Correta: ${letras[Q.c]}) ${Q.o[Q.c]}</div>`;
+    html+=`<div class="exp">${Q.e}</div></div>`;
+  });
+  rev.innerHTML=html;
+  rev.classList.remove('hidden');
+  rev.scrollIntoView({behavior:'smooth'});
+}
+
+function reiniciar(){ iniciar(); window.scrollTo(0,0); }
+</script>
 </body>
 </html>
