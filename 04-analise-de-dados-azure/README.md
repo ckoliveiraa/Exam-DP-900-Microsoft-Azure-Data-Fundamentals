@@ -32,7 +32,6 @@ Ao final deste módulo, você será capaz de:
 
 ## Recursos Complementares
 
-- [Laboratórios práticos](./labs.md)
 - [Glossário do módulo](./glossario.md)
 - [Flashcards](./flashcards.md)
 - [Simulado — Domínio 4](./simulado.md)
