@@ -36,6 +36,7 @@ Ao final deste módulo, você será capaz de:
 - [Simulado — Domínio 3](./simulado.md)
 - [Checklist de revisão](./checklist.md)
 - [Homework](./homework.md)
+- [⚡ Trilha rápida (revisão de véspera)](./trilha-rapida.md)
 
 ---
 
