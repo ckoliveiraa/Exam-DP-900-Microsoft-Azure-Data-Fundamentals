@@ -1,12 +1,12 @@
 # Homework — Módulo 1 (Conceitos Centrais de Dados)
 
-> 🎯 **Objetivo:** consolidar o módulo 1 com **desafios abertos**. Diferente dos [labs](./labs.md) (passo a passo), aqui **você decide como resolver** e precisa **justificar** suas escolhas.
+> 🎯 **Objetivo:** consolidar o módulo 1 com **desafios abertos**. Aqui **você decide como resolver** e precisa **justificar** suas escolhas com base nas aulas do módulo.
 >
 > ⏱️ **Tempo estimado:** 2 a 3 horas.
 >
 > 💸 **Custo estimado:** US$ 0 — use a conta gratuita do Azure.
 >
-> 📌 **Pré-requisito:** ter concluído os [Labs 1.1 a 1.4](./labs.md).
+> 📌 **Pré-requisito:** ter estudado as aulas [1.1 a 1.6](./README.md).
 
 ---
 
