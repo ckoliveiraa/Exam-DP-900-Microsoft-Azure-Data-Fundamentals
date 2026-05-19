@@ -68,9 +68,9 @@
 
   <!-- TELA INICIAL -->
   <div id="inicio" class="card">
-    <p>Este simulado reúne <b>40 questões</b> no estilo do exame oficial, cobrindo os 4 domínios do DP-900.</p>
+    <p>Este simulado reúne <b>60 questões</b> no estilo do exame oficial, cobrindo os 4 domínios do DP-900.</p>
     <ul class="info">
-      <li><b>Questões:</b> 40 (sorteadas e embaralhadas)</li>
+      <li><b>Questões:</b> 60 (embaralhadas a cada tentativa)</li>
       <li><b>Aprovação:</b> 70% — equivale à nota de corte <b>700/1000</b></li>
       <li><b>Formato:</b> uma resposta correta por questão</li>
       <li><b>Ao final:</b> nota, desempenho por domínio e revisão comentada</li>
@@ -164,7 +164,33 @@ const BANCO = [
   {d:4,q:"Qual serviço do Azure é dedicado à análise de fluxos em tempo real?",o:["Azure Data Factory","Azure Stream Analytics","Azure Synapse Pipelines","Power BI Desktop"],c:1,e:"O Azure Stream Analytics é dedicado a fluxos em tempo real."},
   {d:4,q:"Em qual componente do Power BI os relatórios são criados?",o:["Power BI Mobile","Power BI Desktop","Power BI Gateway","OneLake"],c:1,e:"Os relatórios são criados no Power BI Desktop."},
   {d:4,q:"Qual a diferença entre relatório e painel no Power BI?",o:["Não há diferença","O relatório tem uma página; o painel tem várias","O relatório pode ter várias páginas; o painel tem uma única","O painel só funciona offline"],c:2,e:"Relatório pode ter várias páginas; o painel (dashboard) tem uma única."},
-  {d:4,q:"Para mostrar a tendência de vendas ao longo dos meses, a melhor visualização é:",o:["Gráfico de pizza","Gráfico de linhas","Mapa","Cartão (KPI)"],c:1,e:"O gráfico de linhas é ideal para tendências ao longo do tempo."}
+  {d:4,q:"Para mostrar a tendência de vendas ao longo dos meses, a melhor visualização é:",o:["Gráfico de pizza","Gráfico de linhas","Mapa","Cartão (KPI)"],c:1,e:"O gráfico de linhas é ideal para tendências ao longo do tempo."},
+
+  // ---- Domínio 1 (complemento) ----
+  {d:1,q:"Qual formato de arquivo, além do Parquet, é orientado a coluna?",o:["CSV","ORC","JSON","Avro"],c:1,e:"O ORC (Optimized Row Columnar) é um formato binário colunar."},
+  {d:1,q:"Dados não estruturados normalmente são armazenados como:",o:["Tabelas relacionais","Arquivos ou blobs","Linhas e colunas","Stored procedures"],c:1,e:"Dados não estruturados são guardados como arquivos/blobs, sem esquema."},
+  {d:1,q:"Uma característica típica das cargas de trabalho analíticas (OLAP) é:",o:["Muitas transações pequenas e rápidas","Leitura e agregação de grandes volumes históricos","Foco em registros individuais","Baixíssima latência de escrita"],c:1,e:"OLAP lê e agrega grandes volumes de dados históricos."},
+  {d:1,q:"Configurar backups, segurança e desempenho de um banco de dados é tarefa de:",o:["Analista de dados","Administrador de banco de dados (DBA)","Engenheiro de dados","Cientista de dados"],c:1,e:"Backup, segurança e desempenho do banco são responsabilidades do DBA."},
+  {d:1,q:"O que significa a sigla ETL?",o:["Extrair, Transformar, Carregar","Exportar, Tratar, Limpar","Extrair, Testar, Liberar","Editar, Transferir, Listar"],c:0,e:"ETL = Extract, Transform, Load (extrair, transformar e carregar)."},
+  {d:1,q:"Qual tipo de banco NoSQL armazena cada item como uma chave única associada a um valor?",o:["Documento","Chave-valor","Grafo","Família de colunas"],c:1,e:"O banco chave-valor associa uma chave única a um valor."},
+
+  // ---- Domínio 2 (complemento) ----
+  {d:2,q:"O que acontece ao executar 'DELETE FROM Cliente' sem a cláusula WHERE?",o:["Gera um erro","Exclui apenas a primeira linha","Exclui todas as linhas da tabela","Exclui a tabela inteira"],c:2,e:"Sem WHERE, o DELETE remove todas as linhas da tabela."},
+  {d:2,q:"Qual é o dialeto SQL usado pelo SQL Server e pelo Azure SQL?",o:["PL/SQL","PL/pgSQL","T-SQL","SQL/PSM"],c:2,e:"T-SQL (Transact-SQL) é o dialeto do SQL Server e do Azure SQL."},
+  {d:2,q:"Qual é a principal vantagem de um índice em uma tabela?",o:["Reduz o espaço em disco","Acelera a busca de linhas","Acelera as gravações","Elimina a chave primária"],c:1,e:"O índice acelera a busca de linhas; o custo é espaço e escrita um pouco mais lenta."},
+  {d:2,q:"O recurso que permite vários bancos do Azure SQL Database compartilharem recursos é o:",o:["Pool elástico","Índice clustered","Managed Instance","Pool de conexões"],c:0,e:"O pool elástico permite que vários bancos compartilhem um conjunto de recursos."},
+
+  // ---- Domínio 3 (complemento) ----
+  {d:3,q:"Qual é a hierarquia de armazenamento do Azure Blob Storage?",o:["Conta → blob → contêiner","Contêiner → conta → blob","Conta → contêiner → blob","Blob → contêiner → conta"],c:2,e:"A hierarquia é conta de armazenamento → contêiner → blob."},
+  {d:3,q:"Qual opção de redundância inclui uma cópia em uma região secundária?",o:["LRS","ZRS","GRS","Nenhuma"],c:2,e:"GRS (Geo-Redundant Storage) inclui cópia em região secundária."},
+  {d:3,q:"Qual API do Azure Cosmos DB é recomendada para um projeto totalmente novo?",o:["API for MongoDB","API for Cassandra","API for NoSQL","API for Table"],c:2,e:"A API for NoSQL é a API nativa do Cosmos DB, ideal para projetos novos."},
+
+  // ---- Domínio 4 (complemento) ----
+  {d:4,q:"Uma sequência automatizada de atividades que move e transforma dados é um:",o:["Data lake","Pipeline de dados","Painel","Esquema estrela"],c:1,e:"Um pipeline de dados orquestra a ingestão e a transformação de ponta a ponta."},
+  {d:4,q:"O Azure Synapse Analytics é melhor descrito como:",o:["Um banco NoSQL","Uma plataforma de análise unificada","Uma ferramenta de visualização","Um serviço de arquivos"],c:1,e:"O Synapse Analytics é uma plataforma de análise unificada (SQL + Spark + pipelines)."},
+  {d:4,q:"O processamento em lote (batch) caracteriza-se por:",o:["Latência baixa, dados processados ao chegar","Latência alta, dados processados em grupos periodicamente","Não usar armazenamento","Processar só em tempo real"],c:1,e:"Batch processa dados em grupos periodicamente, com latência alta."},
+  {d:4,q:"Qual linguagem é usada para criar medidas e colunas calculadas no Power BI?",o:["SQL","DAX","Python","T-SQL"],c:1,e:"DAX (Data Analysis Expressions) é a linguagem de cálculos do Power BI."},
+  {d:4,q:"Como se chama o data lake central e único do Microsoft Fabric?",o:["DataLake","OneLake","BlobLake","SynapseLake"],c:1,e:"O data lake central do Microsoft Fabric é o OneLake."}
 ];
 
 const NOMES_DOMINIO = {

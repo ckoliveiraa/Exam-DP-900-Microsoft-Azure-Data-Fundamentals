@@ -4,7 +4,7 @@ Página publicada via **GitHub Pages** (`index.html`) com o simulado final do cu
 
 ## Sobre o simulado
 
-- **40 questões** no estilo do exame, cobrindo os 4 domínios do DP-900.
+- **60 questões** no estilo do exame, cobrindo os 4 domínios do DP-900.
 - Questões e alternativas são **embaralhadas** a cada tentativa.
 - Aprovação em **70%** (equivalente à nota de corte 700/1000).
 - Ao final: nota, **desempenho por domínio** e **revisão comentada**.
