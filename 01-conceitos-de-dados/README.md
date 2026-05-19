@@ -20,14 +20,14 @@ Ao final deste módulo, você será capaz de:
 
 ## Estrutura do Módulo
 
-| # | Aula | Duração estimada |
-|---|------|------------------|
-| 1.1 | [Como representar dados](./1.1-como-representar-dados.md) | 20 min |
-| 1.2 | [Formatos de arquivo de dados](./1.2-formatos-de-arquivo.md) | 15 min |
-| 1.3 | [Opções de armazenamento de dados](./1.3-opcoes-de-armazenamento.md) | 15 min |
-| 1.4 | [Cargas de trabalho transacionais (OLTP)](./1.4-cargas-transacionais-oltp.md) | 15 min |
-| 1.5 | [Cargas de trabalho analíticas (OLAP)](./1.5-cargas-analiticas-olap.md) | 15 min |
-| 1.6 | [Funções e responsabilidades em dados](./1.6-funcoes-e-responsabilidades.md) | 15 min |
+| # | Aula |
+|---|------|
+| 1.1 | [Como representar dados](./1.1-como-representar-dados.md) |
+| 1.2 | [Formatos de arquivo de dados](./1.2-formatos-de-arquivo.md) |
+| 1.3 | [Opções de armazenamento de dados](./1.3-opcoes-de-armazenamento.md) |
+| 1.4 | [Cargas de trabalho transacionais (OLTP)](./1.4-cargas-transacionais-oltp.md) |
+| 1.5 | [Cargas de trabalho analíticas (OLAP)](./1.5-cargas-analiticas-olap.md) |
+| 1.6 | [Funções e responsabilidades em dados](./1.6-funcoes-e-responsabilidades.md) |
 
 ---
 

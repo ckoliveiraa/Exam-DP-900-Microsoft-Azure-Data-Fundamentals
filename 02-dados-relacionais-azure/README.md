@@ -20,14 +20,14 @@ Ao final deste módulo, você será capaz de:
 
 ## Estrutura do Módulo
 
-| # | Aula | Duração estimada |
-|---|------|------------------|
-| 2.1 | [Conceitos de dados relacionais](./2.1-conceitos-de-dados-relacionais.md) | 15 min |
-| 2.2 | [Normalização e estruturas relacionais](./2.2-normalizacao.md) | 15 min |
-| 2.3 | [SQL — comandos comuns](./2.3-sql-comandos-comuns.md) | 20 min |
-| 2.4 | [Objetos de banco de dados](./2.4-objetos-de-banco.md) | 15 min |
-| 2.5 | [Família Azure SQL](./2.5-familia-azure-sql.md) | 20 min |
-| 2.6 | [Bancos open-source no Azure](./2.6-open-source-azure.md) | 15 min |
+| # | Aula |
+|---|------|
+| 2.1 | [Conceitos de dados relacionais](./2.1-conceitos-de-dados-relacionais.md) |
+| 2.2 | [Normalização e estruturas relacionais](./2.2-normalizacao.md) |
+| 2.3 | [SQL — comandos comuns](./2.3-sql-comandos-comuns.md) |
+| 2.4 | [Objetos de banco de dados](./2.4-objetos-de-banco.md) |
+| 2.5 | [Família Azure SQL](./2.5-familia-azure-sql.md) |
+| 2.6 | [Bancos open-source no Azure](./2.6-open-source-azure.md) |
 
 ---
 

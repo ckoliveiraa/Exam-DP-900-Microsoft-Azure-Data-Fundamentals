@@ -20,13 +20,13 @@ Ao final deste módulo, você será capaz de:
 
 ## Estrutura do Módulo
 
-| # | Aula | Duração estimada |
-|---|------|------------------|
-| 4.1 | [Elementos da análise em larga escala](./4.1-analise-em-larga-escala.md) | 20 min |
-| 4.2 | [Repositórios analíticos: warehouse, lake, lakehouse](./4.2-repositorios-analiticos.md) | 15 min |
-| 4.3 | [Serviços de análise do Azure](./4.3-servicos-de-analise-azure.md) | 20 min |
-| 4.4 | [Análise em tempo real: batch vs streaming](./4.4-analise-em-tempo-real.md) | 15 min |
-| 4.5 | [Visualização de dados com Power BI](./4.5-visualizacao-power-bi.md) | 20 min |
+| # | Aula |
+|---|------|
+| 4.1 | [Elementos da análise em larga escala](./4.1-analise-em-larga-escala.md) |
+| 4.2 | [Repositórios analíticos: warehouse, lake, lakehouse](./4.2-repositorios-analiticos.md) |
+| 4.3 | [Serviços de análise do Azure](./4.3-servicos-de-analise-azure.md) |
+| 4.4 | [Análise em tempo real: batch vs streaming](./4.4-analise-em-tempo-real.md) |
+| 4.5 | [Visualização de dados com Power BI](./4.5-visualizacao-power-bi.md) |
 
 ---
 

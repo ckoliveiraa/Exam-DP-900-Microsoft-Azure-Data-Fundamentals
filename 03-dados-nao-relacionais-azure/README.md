@@ -19,13 +19,13 @@ Ao final deste módulo, você será capaz de:
 
 ## Estrutura do Módulo
 
-| # | Aula | Duração estimada |
-|---|------|------------------|
-| 3.1 | [Armazenamento do Azure — visão geral](./3.1-armazenamento-azure-visao-geral.md) | 15 min |
-| 3.2 | [Azure Blob Storage](./3.2-azure-blob-storage.md) | 15 min |
-| 3.3 | [Azure Files e Table Storage](./3.3-files-e-table-storage.md) | 15 min |
-| 3.4 | [Azure Cosmos DB — visão geral e casos de uso](./3.4-cosmos-db-visao-geral.md) | 15 min |
-| 3.5 | [APIs do Cosmos DB](./3.5-cosmos-db-apis.md) | 15 min |
+| # | Aula |
+|---|------|
+| 3.1 | [Armazenamento do Azure — visão geral](./3.1-armazenamento-azure-visao-geral.md) |
+| 3.2 | [Azure Blob Storage](./3.2-azure-blob-storage.md) |
+| 3.3 | [Azure Files e Table Storage](./3.3-files-e-table-storage.md) |
+| 3.4 | [Azure Cosmos DB — visão geral e casos de uso](./3.4-cosmos-db-visao-geral.md) |
+| 3.5 | [APIs do Cosmos DB](./3.5-cosmos-db-apis.md) |
 
 ---
 
