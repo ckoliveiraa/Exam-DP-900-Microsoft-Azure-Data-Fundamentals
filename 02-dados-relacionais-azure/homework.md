@@ -6,7 +6,7 @@
 >
 > 💸 **Custo estimado:** US$ 0 — use a conta gratuita do Azure.
 >
-> 📌 **Pré-requisito:** ter estudado as aulas [2.1 a 2.6](./README.md).
+> 📌 **Pré-requisito:** ter estudado as aulas 2.1 a 2.6 e concluído os [Labs](./labs.md).
 
 ---
 
