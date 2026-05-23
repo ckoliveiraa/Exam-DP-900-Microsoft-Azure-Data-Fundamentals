@@ -41,6 +41,8 @@
 - [Trilhas de aprendizado DP-900 no Microsoft Learn](https://learn.microsoft.com/pt-br/training/courses/dp-900t00)
 - [Documentação do Azure (pt-BR)](https://learn.microsoft.com/pt-br/azure/)
 - [Conta gratuita do Azure](https://azure.microsoft.com/pt-br/free/)
+- [Microsoft Learn](https://learn.microsoft.com/)
+- [Eventos Microsoft (pt-BR)](https://www.microsoft.com/pt-br/events/)
 
 ---
 
