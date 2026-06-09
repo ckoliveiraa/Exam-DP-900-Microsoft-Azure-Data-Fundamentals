@@ -38,6 +38,7 @@
 
 - [Página da certificação DP-900](https://learn.microsoft.com/pt-br/credentials/certifications/azure-data-fundamentals/)
 - [Guia de estudo do exame DP-900](https://learn.microsoft.com/pt-br/credentials/certifications/resources/study-guides/dp-900)
+- [Avaliação prática oficial DP-900 (practice assessment)](https://learn.microsoft.com/pt-br/credentials/certifications/exams/dp-900/practice/assessment?assessment-type=practice&assessmentId=24)
 - [Trilhas de aprendizado DP-900 no Microsoft Learn](https://learn.microsoft.com/pt-br/training/courses/dp-900t00)
 - [Documentação do Azure (pt-BR)](https://learn.microsoft.com/pt-br/azure/)
 - [Conta gratuita do Azure](https://azure.microsoft.com/pt-br/free/)
